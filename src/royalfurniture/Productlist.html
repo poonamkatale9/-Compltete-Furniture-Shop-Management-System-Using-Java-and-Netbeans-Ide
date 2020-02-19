@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Product List</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+table,th,td{
+border:1px solid black;
+border-collapse:collapse}
+</style>
+    </head>
+    <body>
+        <div></div>
+        <table>
+
+
+
+<tr>
+<th> Category</th>
+
+<th>Product Name</th>
+<th></th>
+<th></th>
+<th>Color</th>
+
+
+<th>Price</th>
+<th>Button</th>
+</tr>
+
+<% List<Product> product=(List)session.getAttribute("product");
+if(question.size()>0){
+Iterator<Question> itr=question.iterator();
+while(itr.hasNext()){
+	Question que=(Question)itr.next();
+	
+
+%>
+<form action="QuestionServlet" method="post">
+<tr>
+<td><%=que.getQueId() %></td>
+<td><%=que.getName() %></td>
+<td><input type="hidden" name="admin_id" value="<%=admin_reg.getAdminId()%>"></td>
+<td><input type="hidden" name="que_id" value="<%=que.getQueId()%>"></td>
+<td><%=que.getQueryAsk() %></td>
+<td><input type="text" name="query_reply"></td>
+<td><input type="submit" name="action" value="update"></td>
+</tr>
+
+</form>
+
+
+<%}}else{%>
+<label>No records found</label>
+<%} %>
+</table>
+    </body>
+</html>
